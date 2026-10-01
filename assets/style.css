@@ -8,16 +8,30 @@
   --r-card:16px; --r-btn:12px;
   --tg-bg:var(--bg); --tg-text:var(--ink); --tg-hint:var(--muted);
   --tg-button:var(--purple); --tg-button-text:#fff; --tg-secondary-bg:var(--surface);
+
+  /* Telegram: высота вьюпорта и безопасные зоны. Переменные --tg-* ставит сам
+     мессенджер, --sa-*/--csa-*/--vh переопределяет assets/tma.js, в обычном
+     браузере работают env() и 100vh. */
+  --vh: var(--tg-viewport-stable-height, 100vh);
+  --sa-top: var(--tg-safe-area-inset-top, env(safe-area-inset-top, 0px));
+  --sa-bottom: var(--tg-safe-area-inset-bottom, env(safe-area-inset-bottom, 0px));
+  --csa-top: var(--tg-content-safe-area-inset-top, 0px);
+  --csa-bottom: var(--tg-content-safe-area-inset-bottom, 0px);
+  --top-pad: calc(var(--sa-top) + var(--csa-top));
+  --bottom-pad: calc(var(--sa-bottom) + var(--csa-bottom));
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
-body{font-family:Montserrat,-apple-system,Segoe UI,sans-serif;color:var(--ink);background:var(--surface);-webkit-font-smoothing:antialiased}
+body{font-family:Montserrat,-apple-system,Segoe UI,sans-serif;color:var(--ink);background:var(--tg-theme-bg-color,var(--surface));-webkit-font-smoothing:antialiased;overscroll-behavior-y:none}
 a{color:inherit;text-decoration:none}
 button{font:inherit;cursor:pointer}
 .hide{display:none !important}
 
 /* ---------- мини-апп ---------- */
-.tma{max-width:460px;margin:0 auto;min-height:100vh;background:var(--bg);display:flex;flex-direction:column;padding-bottom:96px;position:relative}
+.tma{max-width:460px;margin:0 auto;min-height:var(--vh);background:var(--bg);display:flex;flex-direction:column;position:relative;
+  padding-top:var(--top-pad);padding-bottom:calc(96px + var(--bottom-pad))}
+/* полоса под шапкой Telegram: в полноэкранном режиме контент прокручивается под неё */
+.tma-scrim{position:fixed;left:0;right:0;top:0;height:var(--top-pad);background:var(--bg);z-index:20;pointer-events:none}
 .tma-head{padding:20px 16px 8px}
 .tma-hello{font-size:14px;color:var(--muted);margin:0 0 2px}
 .tma-title{font-size:22px;font-weight:700;color:var(--purple);margin:0}
@@ -49,14 +63,16 @@ button{font:inherit;cursor:pointer}
 .row .t{font-size:15px;font-weight:600}
 .row .s{font-size:13px;color:var(--muted);margin-top:2px}
 .list{display:flex;flex-direction:column;gap:10px}
-.mainbtn{position:fixed;left:0;right:0;bottom:0;max-width:460px;margin:0 auto;padding:12px 16px 24px;background:linear-gradient(180deg,rgba(255,255,255,0),var(--bg) 24%)}
+.mainbtn{position:fixed;left:0;right:0;bottom:0;max-width:460px;margin:0 auto;z-index:18;
+  padding:12px 16px calc(24px + var(--bottom-pad));background:linear-gradient(180deg,rgba(255,255,255,0),var(--bg) 24%)}
 .mainbtn button,.mainbtn a{display:block;width:100%;background:var(--purple);color:#fff;border:none;border-radius:var(--r-btn);padding:16px;font-size:16px;font-weight:600;text-align:center}
 .mainbtn .ghost{background:var(--surface);color:var(--ink);margin-top:8px}
-.tabbar{position:fixed;left:0;right:0;bottom:0;max-width:460px;margin:0 auto;background:var(--bg);border-top:1px solid var(--border);display:grid;grid-template-columns:repeat(4,1fr);padding:8px 0 20px}
+.tabbar{position:fixed;left:0;right:0;bottom:0;max-width:460px;margin:0 auto;z-index:18;background:var(--bg);border-top:1px solid var(--border);
+  display:grid;grid-template-columns:repeat(4,1fr);padding:8px 0 calc(20px + var(--bottom-pad))}
 .tabbar a{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:11px;color:var(--muted)}
 .tabbar a.on{color:var(--purple);font-weight:600}
 .tabbar svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.6}
-.tgbar{display:flex;align-items:center;gap:12px;padding:10px 16px;background:var(--bg);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:5}
+.tgbar{display:flex;align-items:center;gap:12px;padding:10px 16px;background:var(--bg);border-bottom:1px solid var(--border);position:sticky;top:var(--top-pad);z-index:15}
 .tgbar a{font-size:22px;color:#2F86DE;line-height:1}
 .tgbar b{font-size:16px}
 .empty{text-align:center;padding:48px 24px;color:var(--muted)}
@@ -164,4 +180,4 @@ table.data tbody tr:hover{background:var(--purple-tint);cursor:pointer}
 /* правки после прогона в браузере */
 .meta svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.8;flex:0 0 auto}
 .row svg,.list svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8;flex:0 0 auto}
-@media(max-width:520px){.proto{bottom:94px;font-size:11px;padding:6px 12px;right:12px}}
+@media(max-width:520px){.proto{bottom:calc(94px + var(--bottom-pad));font-size:11px;padding:6px 12px;right:12px}}
