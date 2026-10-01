@@ -26,6 +26,28 @@
   try { tg.ready(); } catch (e) {}
   try { tg.expand(); } catch (e) {}
   try { tg.disableVerticalSwipes && tg.disableVerticalSwipes(); } catch (e) {}
+
+  /* Системная кнопка «назад» Telegram. Без неё на вложенном экране остаётся
+     только крестик, который закрывает всё приложение. Корневые вкладки её прячут. */
+  var ROOTS = ['index.html', 'my.html', 'school.html', 'profile.html', ''];
+  function currentFile() {
+    var parts = location.pathname.split('/');
+    return parts[parts.length - 1];
+  }
+  function setupBack() {
+    var bb = tg.BackButton;
+    if (!bb) return;
+    if (ROOTS.indexOf(currentFile()) !== -1) { try { bb.hide(); } catch (e) {} return; }
+    try {
+      bb.onClick(function () {
+        if (window.history.length > 1) window.history.back();
+        else location.href = 'index.html';
+      });
+      bb.show();
+    } catch (e) {}
+  }
+  setupBack();
+
   apply();
   ['viewportChanged', 'safeAreaChanged', 'contentSafeAreaChanged', 'fullscreenChanged', 'themeChanged']
     .forEach(function (ev) { try { tg.onEvent(ev, apply); } catch (e) {} });
