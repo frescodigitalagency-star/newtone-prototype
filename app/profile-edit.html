@@ -1,0 +1,40 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Мои данные · New Tone School</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head><body><div class="tma">
+<div class="tgbar"><a href="profile.html">&#8249;</a><b>Мои данные</b></div>
+<div class="tma-body" style="padding-top:16px">
+<p style="margin:0;color:var(--muted);font-size:14px;line-height:1.45">Эти данные школа видит в заявке. Менять можно в любой момент, старые записи обновятся сами.</p>
+
+<p class="sec-title">Родитель</p>
+<div class="field"><label>Имя</label><input value="Нигора"></div>
+<div class="field"><label>Фамилия</label><input value="Каримова"></div>
+<div class="field"><label>Телефон</label>
+<div style="display:flex;gap:8px"><input value="+998 90 123-45-67" style="flex:1">
+<button style="flex:0 0 auto;padding:0 14px;border-radius:12px;border:1px solid var(--purple-line);background:var(--purple-tint);color:var(--purple);font-size:13px;font-weight:600">Из Telegram</button></div>
+<p class="note" style="text-align:left;margin-top:6px">Кнопка берёт номер из вашего аккаунта, вводить руками не нужно</p></div>
+<div class="field"><label>Почта</label><input type="email" value="nigora.karimova@gmail.com" placeholder="для договора и документов">
+<p class="note" style="text-align:left;margin-top:6px">На почту приходят договор, счёт и официальные письма школы. Напоминания — только в Telegram</p></div>
+<div class="field"><label>Как с вами удобнее связаться</label>
+<select><option selected>Telegram</option><option>Звонок</option><option>Почта</option></select></div>
+
+<p class="sec-title">Дети</p>
+<div class="list">
+<a class="row" href="kids.html"><div><p class="t">Амир, 7 лет</p><p class="s">начальная школа · аллергия на орехи</p></div><span class="pill">править</span></a>
+<a class="row" href="kids.html"><div><p class="t">Лола, 4 года</p><p class="s">детский сад</p></div><span class="pill">править</span></a>
+<a class="row" href="kids.html"><p class="t" style="color:var(--purple)">+ Добавить ребёнка</p></a></div>
+
+<p class="sec-title">Согласия</p>
+<label class="check"><input type="checkbox" checked disabled><div><p class="t">Обработка персональных данных</p><p class="s">дано 2 октября 2026 · версия 1.0 · без него запись невозможна</p></div></label>
+<label class="check"><input type="checkbox" checked><div><p class="t">Анонсы мероприятий</p><p class="s">можно выключить, на напоминания о своих записях не влияет</p></div></label>
+<label class="check"><input type="checkbox"><div><p class="t">Письма на почту</p><p class="s">новости школы раз в месяц</p></div></label>
+
+<p class="sec-title">Язык</p>
+<div class="chips"><button class="chip on">Русский</button><button class="chip">O&#39;zbekcha</button><button class="chip">English</button></div>
+<p class="note" style="text-align:left;margin:4px 0 0">Данные хранятся на сервере в Узбекистане. Скачать или удалить их можно в профиле.</p>
+</div>
+<div class="mainbtn"><a href="profile.html">Сохранить</a></div></div>
+<div class="proto">прототип · данные примерные</div></body></html>
