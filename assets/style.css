@@ -183,3 +183,56 @@ table.data tbody tr:hover{background:var(--purple-tint);cursor:pointer}
 .meta svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.8;flex:0 0 auto}
 .row svg,.list svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8;flex:0 0 auto}
 @media(max-width:520px){.proto{bottom:calc(94px + var(--bottom-pad));font-size:11px;padding:6px 12px;right:12px}}
+
+/* ---------- адаптация под телефоны: Android и iPhone, узкие и широкие ---------- */
+/* iOS приближает страницу, если поле ввода мельче 16px */
+.field input,.field textarea,.field select,.tma input,.tma textarea,.tma select{font-size:16px}
+/* нажимаемое — не меньше 44px, и без синей вспышки Android/iOS */
+.chip{min-height:44px;display:inline-flex;align-items:center}
+.tabbar a{min-height:48px;justify-content:center}
+.pill{min-height:32px;display:inline-flex;align-items:center}
+.tma button,.tma a,.tma label.check{-webkit-tap-highlight-color:transparent}
+.tma button{appearance:none;-webkit-appearance:none}
+.tma select{appearance:none;-webkit-appearance:none;background-image:none}
+/* ряд «поле + кнопка» на узких экранах: поле сжимается, кнопка не вылезает */
+.tma .field>div{display:flex;gap:8px;min-width:0}
+.tma .field>div>input{flex:1 1 0;min-width:0}
+.tma .field>div>button{flex:0 1 auto;white-space:nowrap;min-height:48px}
+@media(max-width:340px){.tma .field>div{flex-wrap:wrap}.tma .field>div>button{width:100%}}
+/* совсем узкие экраны: плитки в один столбец, заголовок мельче */
+@media(max-width:340px){.tiles{grid-template-columns:1fr}.tma-title{font-size:20px}.slots{grid-template-columns:repeat(2,1fr)}}
+/* широкие телефоны и планшеты: контейнер не шире 460, фон вокруг — цвет темы */
+@media(min-width:520px){.tma{box-shadow:0 0 0 1px var(--border)}}
+/* высота под клавиатурой на Android: dvh, где поддерживается */
+@supports(height:100dvh){.tma{min-height:var(--vh,100dvh)}}
+/* картинки не дёргают раскладку, пока грузятся */
+.card-photo{background:var(--purple-tint)}
+img{max-width:100%}
+
+/* ---------- тёмная тема Telegram (класс ставит assets/tma.js) ---------- */
+.tg-dark{
+  --bg:#1C1C22; --surface:#26262E; --border:#34343E; --ink:#F2F2F6; --muted:#A8A6B6; --faint:#8B8999;
+  --purple-tint:#2E2545; --purple-line:#4A3C72; --yellow-soft:#3A3310;
+}
+.tg-dark .tma,.tg-dark .tgbar,.tg-dark .tabbar,.tg-dark .tma-scrim{background:var(--bg)}
+.tg-dark .mainbtn{background:linear-gradient(180deg,rgba(28,28,34,0),var(--bg) 24%)}
+.tg-dark .mainbtn .ghost{background:var(--surface);color:var(--ink)}
+.tg-dark .card,.tg-dark .row,.tg-dark .check,.tg-dark .qr{background:var(--surface);border-color:var(--border)}
+.tg-dark .qr{background:#fff}
+.tg-dark .chip,.tg-dark .day,.tg-dark .slot{background:var(--surface);color:var(--ink)}
+.tg-dark .chip.on{background:var(--purple);color:#fff}
+.tg-dark .day.on{background:var(--yellow);color:var(--on-yellow)}
+.tg-dark .slot.on{background:var(--purple);color:#fff}
+.tg-dark .slot[disabled]{color:#5E5C6C}
+.tg-dark .tile{background:var(--purple-tint)}
+.tg-dark .tile svg{stroke:#C9B8F2}
+.tg-dark .tile span,.tg-dark .tma-title{color:#E6DCFF}
+.tg-dark .pill{background:var(--purple-tint);color:#C9B8F2}
+.tg-dark .pill.g{background:#153A25;color:#7BE0A1}
+.tg-dark .bubble.them{background:var(--surface)}
+.tg-dark .date-badge{background:var(--surface)}
+.tg-dark .date-badge b{color:var(--ink)}
+.tg-dark .seat.none{background:#3A3A44;color:#C8C6D2}
+.tg-dark .field input,.tg-dark .field textarea,.tg-dark .field select,.tg-dark .tma input{background:var(--surface);color:var(--ink);border-color:var(--border)}
+.tg-dark .field input::placeholder,.tg-dark .field textarea::placeholder{color:var(--faint)}
+.tg-dark .tgbar b{color:var(--ink)}

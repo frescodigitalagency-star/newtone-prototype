@@ -8,8 +8,16 @@
   function px(v) { return (typeof v === 'number' && isFinite(v) && v >= 0) ? v + 'px' : null; }
   function set(name, value) { if (value !== null) root.style.setProperty(name, value); }
 
+  function applyTheme() {
+    if (!tg) return;
+    var dark = tg.colorScheme === 'dark';
+    root.classList.toggle('tg-dark', dark);
+    try { tg.setHeaderColor && tg.setHeaderColor(dark ? '#1C1C22' : '#FFFFFF'); } catch (e) {}
+    try { tg.setBackgroundColor && tg.setBackgroundColor(dark ? '#1C1C22' : '#FFFFFF'); } catch (e) {}
+  }
   function apply() {
     if (!tg) return;
+    applyTheme();
     var h = px(tg.viewportStableHeight) || px(tg.viewportHeight);
     set('--vh', h);
 
