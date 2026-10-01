@@ -1,0 +1,54 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>New Tone School — прототип бота, мини-аппа и админки</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+.hero{max-width:1120px;margin:0 auto;padding:64px 24px}
+.hero h1{font-size:44px;line-height:1.1;margin:0 0 14px}
+.hero h1 em{font-style:normal;background:var(--yellow);color:var(--on-yellow);border-radius:12px;padding:2px 14px}
+.hero p.lead{font-size:18px;color:var(--muted);line-height:1.5;margin:0 0 36px;max-width:720px}
+.two-up{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:28px}
+.big{background:#fff;border:1px solid var(--border);border-radius:20px;padding:32px;display:block}
+.big h2{margin:0 0 8px;font-size:24px}
+.big p{margin:0 0 18px;color:var(--muted);font-size:15px;line-height:1.5}
+.links{display:flex;flex-wrap:wrap;gap:8px}
+.links a{font-size:13px;padding:7px 14px;border-radius:999px;background:var(--surface);color:var(--ink)}
+.links a:hover{background:var(--purple-tint);color:var(--purple)}
+.dark{background:var(--ink);color:#fff;border-color:var(--ink)}
+.dark h2,.dark p{color:#fff}.dark p{opacity:.72}
+.dark .links a{background:#2A2340;color:#fff}
+@media(max-width:860px){.two-up{grid-template-columns:1fr}.hero h1{font-size:32px}}
+</style></head><body style="background:var(--surface)">
+<div class="hero">
+<p style="font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--purple);font-weight:700;margin:0 0 18px">New Tone School · прототип</p>
+<h1>Бот, мини-апп и админка <em>для школы</em></h1>
+<p class="lead">Кликабельный прототип: экраны связаны между собой, переходы работают, данные показаны примером. Бэкенда нет — это витрина перед разработкой.</p>
+<div class="two-up">
+<a class="big" href="app/index.html">
+<h2>Мини-апп для родителей</h2>
+<p>Открывается внутри Telegram. Афиша, запись на события и экскурсии, QR-билет, чат события, календарь школы, профиль с согласиями. Лучше смотреть с телефона.</p>
+<div class="links"><span>13 экранов</span></div></a>
+<a class="big dark" href="admin/index.html">
+<h2>Веб-админка школы</h2>
+<p>Дашборд, клиенты с поиском, воронка заявок, календарь мероприятий, чекин по QR, рассылки, маркетинг, настройки с мерчантами и Google Sheets, роли и журнал.</p>
+<div class="links"><span>17 страниц</span></div></a>
+</div>
+<div class="big" style="margin-bottom:20px">
+<h2 style="font-size:19px">Мини-апп · быстрые переходы</h2>
+<div class="links">
+<a href="app/index.html">Афиша</a><a href="app/event.html">Событие</a><a href="app/register.html">Запись</a>
+<a href="app/ticket.html">Билет</a><a href="app/tour.html">Экскурсия</a><a href="app/price.html">Стоимость</a>
+<a href="app/my.html">Мои записи</a><a href="app/chat.html">Вопрос администратору</a><a href="app/kids.html">Мои дети</a>
+<a href="app/profile.html">Профиль</a><a href="app/school.html">О школе</a><a href="app/calendar.html">Календарь</a><a href="app/review.html">Отзыв</a></div></div>
+<div class="big">
+<h2 style="font-size:19px">Админка · быстрые переходы</h2>
+<div class="links">
+<a href="admin/index.html">Дашборд</a><a href="admin/clients.html">Клиенты</a><a href="admin/client.html">Карточка клиента</a>
+<a href="admin/leads.html">Заявки</a><a href="admin/events.html">Мероприятия</a><a href="admin/event-new.html">Создание события</a>
+<a href="admin/participants.html">Участники и чекин</a><a href="admin/inbox.html">Обращения</a><a href="admin/broadcasts.html">Рассылки</a>
+<a href="admin/broadcast-new.html">Новая рассылка</a><a href="admin/marketing.html">Маркетинг</a><a href="admin/settings.html">Профиль школы</a>
+<a href="admin/settings-merchants.html">Мерчанты</a><a href="admin/settings-sheets.html">Google Sheets</a><a href="admin/settings-bot.html">Бот и ссылки</a>
+<a href="admin/users.html">Пользователи</a><a href="admin/log.html">Журнал</a></div></div>
+<p style="margin:36px 0 0;font-size:13px;color:var(--faint)">Шамиль Мустафин · Terreya · октябрь 2026</p>
+</div></body></html>
